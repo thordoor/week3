@@ -1,12 +1,13 @@
 <?php
 require 'fileModel.php';
+
 class Numbers
 {
     private $outputArray = [];
     public function findNumbers()
     {
         $fileModel = new FileModel();
-        $strArr = $fileModel->splitText();
+        $strArr = $fileModel->splitText($readFile);
         $resArr = [];
         $allArray = [];
         for ($i=0; $i < count($strArr) ; $i++) {

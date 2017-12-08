@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 require __DIR__ . "/../source/readFile.php";
 
 
-class TestClass extends TestCase
+class ReadFileTest extends TestCase
 {
     public function testGetFileHandle()
     {
@@ -11,6 +11,14 @@ class TestClass extends TestCase
         $result = $fileReader->getFileHandle();
         $this->assertInternalType('resource', $result);
     }
+
+    //stub
+    public function testStubGetFileHandle()
+    {
+        $stub = $this->createMock(ReadFile::class);
+        $stub->method('getFileHandle')->willReturn(['0 5 6 4 8', 'Horse']);
+        $this->assertEquals(['0 5 6 4 8', 'Horse'], $stub->getFileHandle());
+    } 
     
 }
 ?>

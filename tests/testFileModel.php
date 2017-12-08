@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 require __DIR__ . "/../source/fileModel.php";
 
 
-class TestClass extends TestCase
+class FileModelTest extends TestCase
 {
     private $fileModel;
 
@@ -19,6 +19,13 @@ class TestClass extends TestCase
         $fileModel = new FileModel();
         $result = $fileModel->getText();
         $this->assertEquals('hej', $result);
+    }
+
+    public function testGetFileHandleMock()
+    {
+        $stub = $this->createMock(ReadFile::class);
+        $stub->method('getFileHandle')->willReturn(['0 5 6 4 8', 'Horse']);
+        $this->assertEquals(['0 5 6 4 8', 'Horse'], $stub->getFileHandle());
     }
 
     public function testSplitText()
@@ -41,13 +48,5 @@ class TestClass extends TestCase
         $result = $fileModel->writeToLogHandler('Horse');
         $this->assertEquals('Horse', $result);
     }
-
-    //stub
-    public function testStubSplitText()
-    {
-        $stub = $this->createMock(FileModel::class);
-        $stub->method('splitText')->willReturn(['0 5 6 4 8', 'Horse']);
-        $this->assertEquals(['0 5 6 4 8', 'Horse'], $stub->splitText());
-    } 
 }
 ?>

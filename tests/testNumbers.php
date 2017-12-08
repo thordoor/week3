@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 require __DIR__ . "/../source/numbers.php";
 
-class TestClass extends TestCase
+class NumbersTest extends TestCase
 {
     public function testFindNumbers()
     {

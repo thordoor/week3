@@ -1,7 +1,8 @@
 <?php
-require 'readFile.php';
 require 'writeOutput.php';
 require 'writeToLog.php';
+require 'readFile.php';
+
 class FileModel
 {
 
