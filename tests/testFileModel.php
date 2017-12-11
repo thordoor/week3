@@ -24,7 +24,7 @@ class FileModelTest extends TestCase
         $result = $fileModel->getText();
         $this->assertEquals($testString, $result);
     }
-
+    
     public function testGetFileHandleMock()
     {
         $stub = $this->createMock(ReadFile::class);
