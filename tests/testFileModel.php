@@ -24,8 +24,8 @@ class FileModelTest extends TestCase
         $result = $fileModel->getText();
         $this->assertEquals($testString, $result);
     }
-    
-    public function testGetFileHandleMock()
+
+    public function testGetFileHandleStub()
     {
         $stub = $this->createMock(ReadFile::class);
         $stub->method('getFileHandle')->willReturn(['0 5 6 4 8', 'Horse']);
@@ -39,6 +39,14 @@ class FileModelTest extends TestCase
         $fileModel = new FileModel();
         $result = $fileModel->splitText();
         $this->assertEquals($testArray, $result);
+    }
+
+    public function testWriteToOutputReturnsFormattedString()
+    {
+        $testArray = ['0 5 6 4 8', 'Horse', '5', '', '5 6 7 8'];
+        $stub = $this->createMock(WriteOutput::class);
+        $stub->method('printOutput')->willReturn('0 5 6 4 8', 'Horse', '5', '', '5 6 7 8');
+        $this->assertEquals('0 5 6 4 8', $stub->printOutput($testArray));
     }
 
     public function testWriteToOutputhandler()
