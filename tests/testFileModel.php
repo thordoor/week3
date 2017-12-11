@@ -9,16 +9,20 @@ class FileModelTest extends TestCase
 
     public function testParseText()
     {
+        $testString = '0 5 6 4 8' . PHP_EOL . 'Horse' . PHP_EOL . '5' . PHP_EOL . PHP_EOL . '5 6 7 8';
+
         $fileModel = new FileModel();
         $result = $fileModel->parseText();
-        $this->assertEquals('hej', $result);
+        $this->assertEquals($testString, $result);
     }
 
     public function testGetText()
     {
+        $testString = '0 5 6 4 8' . PHP_EOL . 'Horse' . PHP_EOL . '5' . PHP_EOL . PHP_EOL . '5 6 7 8';        
+
         $fileModel = new FileModel();
         $result = $fileModel->getText();
-        $this->assertEquals('hej', $result);
+        $this->assertEquals($testString, $result);
     }
 
     public function testGetFileHandleMock()
@@ -30,16 +34,18 @@ class FileModelTest extends TestCase
 
     public function testSplitText()
     {
+        $testArray = ['0 5 6 4 8', 'Horse', '5', '', '5 6 7 8'];
+
         $fileModel = new FileModel();
         $result = $fileModel->splitText();
-        $this->assertEquals([], $result);
+        $this->assertEquals($testArray, $result);
     }
 
     public function testWriteToOutputhandler()
     {
         $fileModel = new FileModel();
         $result = $fileModel->writeToOutputHandler([23]);
-        $this->assertEquals([], $result);
+        $this->assertEquals([23], $result);
     }
 
     public function testWriteToLogHandler()
