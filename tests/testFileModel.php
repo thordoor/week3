@@ -43,10 +43,11 @@ class FileModelTest extends TestCase
 
     public function testWriteToOutputReturnsFormattedString()
     {
+        $testString = '0 5 6 4 8' . PHP_EOL . 'Horse' . PHP_EOL . '5' . PHP_EOL . PHP_EOL . '5 6 7 8';
         $testArray = ['0 5 6 4 8', 'Horse', '5', '', '5 6 7 8'];
         $stub = $this->createMock(WriteOutput::class);
-        $stub->method('printOutput')->willReturn('0 5 6 4 8', 'Horse', '5', '', '5 6 7 8');
-        $this->assertEquals('0 5 6 4 8', $stub->printOutput($testArray));
+        $stub->method('printOutput')->willReturn($testString);
+        $this->assertEquals($testString, $stub->printOutput($testArray));
     }
 
     public function testWriteToOutputhandler()
